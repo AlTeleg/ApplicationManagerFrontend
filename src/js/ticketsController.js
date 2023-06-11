@@ -5,7 +5,7 @@ import close from '../img/close.png';
 
 export let someDescription;
 
-export default class TicketListController {
+export default class TicketsController {
   constructor() {
     this.deleteDivClose = this.deleteDivClose.bind(this);
     this.deleteDivShow = this.deleteDivShow.bind(this);
@@ -57,7 +57,7 @@ export default class TicketListController {
       for (let i=0; i < data.length; i++) {
         ticketsArray[i].id = data[i].id;
         ticketsArray[i].querySelector('.ticket-name').textContent = data[i].name;
-        ticketsArray[i].firstElementChild.style.visibility = (data[i].status === 'true' ? 'visible' : 'hidden');
+        ticketsArray[i].firstElementChild.firstElementChild.style.visibility = (data[i].status === 'true' ? 'visible' : 'hidden');
         ticketsArray[i].querySelector('.ticket-date').textContent = new Date(data[i].created).toLocaleString().replace(',', '').slice(0,-3);
       }
       this.deleteDivClose();
@@ -113,7 +113,7 @@ export default class TicketListController {
   changeTicketStatus = (id, status=false) => {
     const xhr = new XMLHttpRequest();
     let formData = new FormData();
-    formData.append('name', document.getElementById(id).children[2].textContent);
+    formData.append('name', document.getElementById(id).firstElementChild.children[2].textContent);
     formData.append('status', `${status}`);
     xhr.open('PATCH', 'http://localhost:7070/' + '?method=ticketById' + `&id=${id}`);
     xhr.send(formData);
@@ -125,7 +125,7 @@ export default class TicketListController {
     let formData = new FormData();
     if (this.addTicketFormText.value !== '') {
       formData.append('name', this.addTicketFormText.value);
-      formData.append('status', (document.getElementById(id).firstElementChild.style.visibility === 'visible' ? 'true' : 'false'));
+      formData.append('status', (document.getElementById(id).firstElementChild.firstElementChild.style.visibility === 'visible' ? 'true' : 'false'));
       if (this.addTicketFormTextArea.value != '') {
         formData.append('description', this.addTicketFormTextArea.value);
       }
@@ -245,13 +245,15 @@ export default class TicketListController {
 
         let ticketDiv = document.createElement('div');
         ticketDiv.classList.add('ticket');
+        let ticketMain = document.createElement('div');
+        ticketMain.classList.add('ticket_main');
         let circleImg = document.createElement('img');
         circleImg.src = circle;
         let checkMarkImg = document.createElement('img');
         checkMarkImg.src = checkMark;
         checkMarkImg.classList.add('checkmark');
         circleImg.classList.add('circle');
-        ticketDiv.appendChild(checkMarkImg);
+        ticketMain.appendChild(checkMarkImg);
         let ticketName = document.createElement('p');
         ticketName.classList.add('ticket-name');
         let ticketDate = document.createElement('p');
@@ -262,11 +264,12 @@ export default class TicketListController {
         let editImg = document.createElement('img');
         editImg.src = edit;
         editImg.classList.add('edit');
-        ticketDiv.appendChild(circleImg);
-        ticketDiv.appendChild(ticketName);
-        ticketDiv.appendChild(ticketDate);
-        ticketDiv.appendChild(editImg);
-        ticketDiv.appendChild(closeImg);
+        ticketMain.appendChild(circleImg);
+        ticketMain.appendChild(ticketName);
+        ticketMain.appendChild(ticketDate);
+        ticketMain.appendChild(editImg);
+        ticketMain.appendChild(closeImg);
+        ticketDiv.appendChild(ticketMain);
         this.ticketsDiv.appendChild(ticketDiv);
         
         closeImg.onload = () => {
@@ -306,7 +309,6 @@ export default class TicketListController {
           })
         }
         ticketDiv.addEventListener('click', (e) => {
-          console.log(e.currentTarget.id)
           this.showDescription(e, e.currentTarget.id);
         })
     }
@@ -321,10 +323,10 @@ export default class TicketListController {
     this.getTicket(id, false);
     setTimeout(()=> {
       if (someDescription) {
-        let descriptionP = document.querySelector('.description');
+        let descriptionP = document.querySelector('.ticket_description');
         if (!descriptionP) {
           let description = document.createElement('p');
-          description.classList.add('description');
+          description.classList.add('ticket_description');
           description.textContent = someDescription;
           document.getElementById(id).appendChild(description);  
         } else {
@@ -336,7 +338,7 @@ export default class TicketListController {
   }
 
   closeDescription = () => {
-    document.querySelector('.description').remove();
+    document.querySelector('.ticket_description').remove();
   }
 
 }

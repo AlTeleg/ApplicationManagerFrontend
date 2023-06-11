@@ -1,6 +1,6 @@
-import TicketListController from "./ticketController";
-import {someDescription} from './ticketController';
+import TicketsController from "./ticketsController";
+import {someDescription} from './ticketsController';
 
-const ticketList = new TicketListController();
+const ticketList = new TicketsController();
 ticketList.toDom();
 ticketList.startElementListeners();

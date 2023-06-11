@@ -5,6 +5,7 @@ body {
 
 .ticket-list {
     margin-top: 100px;
+    min-width: 500px;
     max-width: 1200px;
     min-height: 150px;
     width: 80%;
@@ -22,8 +23,21 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    box-sizing: border-box;
-    
+    box-sizing: border-box
+}
+
+.ticket_main {
+    min-height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box
+}
+
+.ticket_description {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 30% 10px 6.5%;
 }
 
 .ticket-name {
@@ -174,10 +188,4 @@ body {
     justify-content: flex-end;
     align-self: flex-end;
 
-}
-
-.description {
-    width: 60%;
-    margin: 10px 0;
-    padding: 10px 90% 10px 6.5%;
 }
