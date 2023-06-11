@@ -1,4 +1,4 @@
-name: Game2
+name: ApplicationManagerFrontend
 
 on: [push, pull_request]
 
