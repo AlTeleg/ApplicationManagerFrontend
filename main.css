@@ -1,0 +1,192 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-list {
+    margin-top: 100px;
+    min-width: 500px;
+    max-width: 1200px;
+    min-height: 150px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1mm ridge rgba(0, 0, 0, 0.6);
+    position: relative;
+    align-self: center;
+}
+
+.ticket {
+    min-height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box
+}
+
+.ticket_main {
+    min-height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box
+}
+
+.ticket_description {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 30% 10px 6.5%;
+}
+
+.ticket-name {
+    margin: 2px 20px 2px 2px;
+    width: 60%;
+    align-self: center;
+}
+
+.ticket-date {
+    margin: 2px 2px 2px 2px;
+    width: 20%;
+    align-self: center;
+}
+
+.ticket:not(:last-of-type) {
+    border-bottom: 1px rgb(156, 156, 156) solid;
+}
+
+.ticket:first-of-type {
+    border-bottom: 1px rgb(156, 156, 156) solid;
+}
+
+.ticket:nth-of-type(2) {
+    border-bottom: 1px rgb(156, 156, 156) solid;
+}
+
+.add-button {
+    width: 150px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px rgb(156, 156, 156) solid;
+    padding: 8px 15px;
+    position: absolute;
+    right: 0;
+    top: -50px;
+    color: rgb(97, 97, 97);
+}
+
+.add-form {
+    min-height: 300px;
+    position: absolute;
+    top: -20px;
+    align-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    border: 1px rgb(156, 156, 156) solid;
+    border-radius: 5px;
+    z-index: 999;
+    background-color: white;
+    padding: 10px;
+}
+
+.add-form_title {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    align-self: center;
+    font-weight: 200;
+}
+
+.add-form_name-input {
+    margin-top: 0px;
+}
+
+.add-form_description-input {
+    margin-bottom: 8px;
+    min-height: 50px;
+    max-height: 100px;
+    resize: vertical;
+}
+
+.ok-button {
+    margin: 0 8px;
+    border-radius: 8px;
+    border: 1px rgb(156, 156, 156) solid;
+    padding: 8px 15px;
+    background-color: white;
+}
+
+.cancel-button {
+    border-radius: 8px;
+    background-color: white;
+    border: 1px rgb(156, 156, 156) solid;
+    padding: 8px 15px;
+}
+
+.add-form_buttons {
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+}
+
+.circle {
+    margin: 3px 3px 3px 15px;
+    align-self: center;
+    position: relative;
+}
+
+.close {
+    margin: 4px 15px 4px 4px;
+    align-self: center;    
+}
+
+.edit {
+    margin: 4px;
+    align-self: center;
+}
+
+.checkmark {
+    margin: 13px 3px 3px 28px;
+    position:absolute;
+    visibility: hidden;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.delete-div {
+    min-height: 210px;
+    position: absolute;
+    top: -20px;
+    align-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    border: 1px rgb(156, 156, 156) solid;
+    border-radius: 5px;
+    z-index: 999;
+    background-color: white;
+    padding: 10px;
+}
+
+.delete-div_title {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    align-self: center;
+    font-weight: 200;
+}
+
+.delete-div_buttons {
+    flex-wrap: wrap;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+
+}
+
